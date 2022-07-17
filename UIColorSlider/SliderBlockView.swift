@@ -60,7 +60,7 @@ extension SliderBlockView {
     }
     
     private func getRoundedColorValue() -> String {
-        String(lround($colorValue.wrappedValue))
+        String(lround(colorValue))
     }
 }
 
