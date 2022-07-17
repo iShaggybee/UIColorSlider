@@ -8,9 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var redValue = Double.random(in: 0...255)
+    @State private var greenValue = Double.random(in: 0...255)
+    @State private var blueValue = Double.random(in: 0...255)
+    
+    @FocusState private var isTextFieldFocused: Bool
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            ColorBlockView(
+                redValue: $redValue,
+                greenValue: $greenValue,
+                blueValue: $blueValue
+            )
+            
+            SliderBlockView(colorValue: $redValue, sliderColor: .red)
+            SliderBlockView(colorValue: $greenValue, sliderColor: .green)
+            SliderBlockView(colorValue: $blueValue, sliderColor: .blue)
+            Spacer()
+        }
+        .padding(EdgeInsets(top: 8, leading: 16, bottom: 0, trailing: 16))
+        .focused($isTextFieldFocused)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    isTextFieldFocused.toggle()
+                }
+            }
+        }
     }
 }
 
