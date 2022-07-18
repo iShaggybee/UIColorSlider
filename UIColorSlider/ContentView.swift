@@ -17,9 +17,9 @@ struct ContentView: View {
     var body: some View {
         VStack {
             ColorBlockView(
-                redValue: $redValue,
-                greenValue: $greenValue,
-                blueValue: $blueValue
+                redValue: redValue,
+                greenValue: greenValue,
+                blueValue: blueValue
             )
             
             SliderBlockView(colorValue: $redValue, sliderColor: .red)
